@@ -1,30 +1,30 @@
 const fs = require("fs");
 const input = fs.readFileSync("./resources/day1_input.txt", "utf-8");
 
-const left_list = [];
-const right_list = [];
-let sum_of_difference = 0;
-let sum_of_similarity = 0;
+const leftList = [];
+const rightList = [];
+let sumOfDifference = 0;
+let sumOfSimilarity = 0;
 
 input.split("\n").forEach((line) => {
   if (line) {
     const [left, right] = line.trim().split(/\s+/);
 
-    left_list.push(parseInt(left));
-    right_list.push(parseInt(right));
+    leftList.push(parseInt(left));
+    rightList.push(parseInt(right));
   }
 });
 
-left_list.sort((a, b) => a - b);
-console.log(left_list);
-right_list.sort((a, b) => a - b);
-console.log(right_list);
+leftList.sort((a, b) => a - b);
+console.log(leftList);
+rightList.sort((a, b) => a - b);
+console.log(rightList);
 
-for (let i = 0; i < left_list.length; i++) {
-  sum_of_difference += Math.abs(left_list[i] - right_list[i]);
-  const target = left_list[i];
-  const occurrences = right_list.filter((num) => num === target).length;
-  sum_of_similarity += target * occurrences;
+for (let i = 0; i < leftList.length; i++) {
+  sumOfDifference += Math.abs(leftList[i] - rightList[i]);
+  const target = leftList[i];
+  const occurrences = rightList.filter((num) => num === target).length;
+  sumOfSimilarity += target * occurrences;
 }
-console.log(sum_of_difference);
-console.log(sum_of_similarity);
+console.log(sumOfDifference);
+console.log(sumOfSimilarity);
